@@ -34,8 +34,8 @@ ENV SOLR_RPT_FIELD_DEFINITION '<fieldType name="location_rpt"   class="solr.Spat
     autoIndex="true"                \
     validationRule="repairBuffer0"  \
     distErrPct="0.025"              \
-    maxDistErr="0.001"              \
-    distanceUnits="kilometers" />'
+    maxDistErr="0.000009"           \
+    distanceUnits="degrees" />'
 
 ENV SOLR_RPT_FIELD '<field name="spatial_geom" type="location_rpt" indexed="true" multiValued="true" />'
 
