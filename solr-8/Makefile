@@ -3,6 +3,7 @@ SHELL := /bin/bash
 CKAN_VERSION=2.10
 TAG_NAME="ckan/ckan-solr:$(CKAN_VERSION)"
 TAG_NAME_LEGACY="ckan/ckan-solr:$(CKAN_VERSION)-solr8"
+DOCKERFILE=Dockerfile
 
 all: help
 help:
@@ -10,9 +11,9 @@ help:
 
 build:	## Build a Solr 8 image for a specific CKAN version, `make build CKAN_VERSION=2.9` (default is 2.10)
 ifeq ($(CKAN_VERSION),$(filter $(CKAN_VERSION),2.10 master))
-	docker build -t $(TAG_NAME) .
+	docker build -f ${DOCKERFILE} -t $(TAG_NAME) .
 else
-	docker build -t $(TAG_NAME_LEGACY) .
+	docker build -f ${DOCKERFILE} -t $(TAG_NAME_LEGACY) .
 endif
 
 push: ## Push an image to the Docker registry, `make push CKAN_VERSION=2.9` (default is 2.10)
